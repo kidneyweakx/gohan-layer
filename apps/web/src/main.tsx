@@ -30,7 +30,7 @@ const metadata = {
 }
 
 const { chains, publicClient } = configureChains(
-  [opBNB],
+  [goerli,opBNB],
   [walletConnectProvider({ projectId }), publicProvider()],
   
 )
