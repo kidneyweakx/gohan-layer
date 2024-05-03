@@ -6,6 +6,10 @@ edition = "2021"
 
 [dependencies]
 sp1-sdk = { git = "https://github.com/succinctlabs/sp1.git" }
+avail-subxt = { git= "https://github.com/availproject/avail.git"}
+unicode-normalization = "0.1.22"
+anyhow = "1.0.82"
+futures = "0.3.30"
 
 [build-dependencies]
 sp1-helper = { git = "https://github.com/succinctlabs/sp1.git" }

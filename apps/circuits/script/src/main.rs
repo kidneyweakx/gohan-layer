@@ -20,5 +20,7 @@ fn main() {
         .save("proof-with-pis.json")
         .expect("saving proof failed");
     println!("proof saved to proof-with-pis.json");
-    println!("successfully generated and verified proof for the program!")
+    println!("successfully generated and verified proof for the program!");
+
+    // Send proof to 
 }
