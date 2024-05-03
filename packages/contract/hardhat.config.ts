@@ -2,7 +2,6 @@ import { HardhatUserConfig } from "hardhat/config"
 import { NetworkUserConfig } from "hardhat/types"
 // hardhat plugin
 import "@nomiclabs/hardhat-ethers"
-// import "@nomicfoundation/hardhat-verify"
 import "@nomicfoundation/hardhat-toolbox"
 
 import { config as dotenvConfig } from "dotenv"
@@ -50,8 +49,6 @@ const config: HardhatUserConfig = {
   defaultNetwork: "hardhat",
   networks: {
     hardhat: {
-      // TODO: SHOULD BE REMOVED! 
-      allowUnlimitedContractSize: false,
       chainId: chainIds.hardhat,
     },
     local: {
