@@ -5,7 +5,7 @@ import { MintButton } from 'src/components/MintGood'
 import { ERC20Address } from 'src/services/contractAbi'
 // import { RegisterButton } from 'src/components/RegisterButton'
 
-export default function Launch() {
+export default function Staker() {
   const [inputValue, setInputValue] = useState<string>('')
   const [inputIdValue, setInputIdValue] = useState<string>('')
 

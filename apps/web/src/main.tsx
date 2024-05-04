@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom'
 import App from './App'
 import Launch from './routes/launch'
+import Staker from './routes/staker'
 import ErrorPage from './routes/error'
 import { QueryClient, QueryClientProvider } from "react-query";
 import { createWeb3Modal, defaultWagmiConfig } from '@web3modal/wagmi/react'
@@ -60,6 +61,11 @@ const router = createBrowserRouter([
     element: <Launch />,
     errorElement: <ErrorPage />,
   },
+  {
+    path: 'staker',
+    element: <Staker />,
+    errorElement: <ErrorPage />,
+  }
 ])
 
 if (rootElement) {

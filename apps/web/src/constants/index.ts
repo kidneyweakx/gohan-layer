@@ -15,6 +15,16 @@ export const navLinks = [
   },
 ];
 
+export const secondNavLinks = [
+  {
+    id: 'Miner',
+    title: 'Miner',
+  },
+  {
+    id: 'Staker',
+    title: 'staker',
+  },
+];
 export const features = [
   {
     id: 'feature-1',
