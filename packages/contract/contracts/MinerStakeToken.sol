@@ -12,6 +12,8 @@ contract MinerStakeToken is ERC20{
     mapping(address => uint256) public minerBalances;
     mapping(address => uint256) public balances;
     mapping(string => bool) public availMiner;
+
+    mapping(address => uint256) public availHash;
     constructor(address _token) ERC20("Gohan Reward Token", "Gohan"){
         token = IERC20(_token);
     }
@@ -45,10 +47,12 @@ contract MinerStakeToken is ERC20{
 
     function lend(address borrower, uint256 amount) external {
         // verify proof here
+        require(availHash[msg.sender] != 0, "Lender not registered");
         token.transfer(borrower, amount);
     }
 
-    function mine(string memory proof) external{
+    function mine(uint256 aHash, address user) external{
       _mint(msg.sender, 1 * ratio);
+      availHash[user] = aHash;
     }
 }
