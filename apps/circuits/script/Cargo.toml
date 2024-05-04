@@ -6,6 +6,7 @@ edition = "2021"
 
 [dependencies]
 sp1-sdk = { git = "https://github.com/succinctlabs/sp1.git" }
+sp1-recursion-gnark-ffi = { git = "https://github.com/succinctlabs/sp1.git" }
 avail-subxt = { git= "https://github.com/availproject/avail.git"}
 unicode-normalization = "0.1.22"
 anyhow = "1.0.82"
@@ -17,6 +18,9 @@ serde = "1.0.200"
 serde_json = "1.0.116"
 base64 = "0.22.1"
 file = "1.1.2"
+tempfile = "3.10.1"
+flate2 = "1.0.30"
+brotli = "5.0.0"
 
 [build-dependencies]
 sp1-helper = { git = "https://github.com/succinctlabs/sp1.git" }
