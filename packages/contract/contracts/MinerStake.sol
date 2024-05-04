@@ -2,13 +2,17 @@
 pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
-contract MinerStake {
+
+contract MinerStake is ERC20{
     IERC20 public immutable token;
-
+    uint256 ratio = 100;
+    
     mapping(address => uint256) public minerBalances;
     mapping(address => uint256) public balances;
-    constructor(address _token) {
+
+    constructor(address _token) ERC20("Gohan Reward Token", "Gohan"){
         token = IERC20(_token);
     }
 
@@ -40,5 +44,9 @@ contract MinerStake {
     function lend(address borrower, uint256 amount) external {
         // verify proof here
         token.transfer(borrower, amount);
+    }
+
+    function mine(string memory proof) external{
+      _mint(msg.sender, 1 * ratio);
     }
 }
