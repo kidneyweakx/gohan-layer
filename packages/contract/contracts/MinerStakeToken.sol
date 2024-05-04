@@ -5,23 +5,25 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 
-contract MinerStake is ERC20{
+contract MinerStakeToken is ERC20{
     IERC20 public immutable token;
     uint256 ratio = 100;
     
     mapping(address => uint256) public minerBalances;
     mapping(address => uint256) public balances;
-
+    mapping(string => bool) public availMiner;
     constructor(address _token) ERC20("Gohan Reward Token", "Gohan"){
         token = IERC20(_token);
     }
 
     event Registered(address indexed miner, uint256 amount);
     event Stake(address indexed staker, uint256 amount);
-    function register(uint256 amount) external {
+    
+    function register(uint256 amount, string memory minerAddr) external {
         require(amount > 100 ** 18, "Minimum stake is 100 tokens");
         token.transferFrom(msg.sender, address(this), amount);
         minerBalances[msg.sender] += amount;
+        availMiner[minerAddr] = true;
         emit Registered(msg.sender, amount);
     }
 

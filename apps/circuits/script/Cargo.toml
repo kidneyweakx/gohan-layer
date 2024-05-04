@@ -11,7 +11,12 @@ unicode-normalization = "0.1.22"
 anyhow = "1.0.82"
 futures = "0.3.30"
 sp-keyring = "36.0.0"
-subxt = "0.35.3"
+tokio = "1.37.0"
+reqwest = "0.12.4"
+serde = "1.0.200"
+serde_json = "1.0.116"
+base64 = "0.22.1"
+file = "1.1.2"
 
 [build-dependencies]
 sp1-helper = { git = "https://github.com/succinctlabs/sp1.git" }

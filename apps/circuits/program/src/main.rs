@@ -15,6 +15,7 @@ use ssz_rs::prelude::*;
 use std::collections::HashMap;
 
 fn main() {
+    // fake circuits just for example use
     // Get inputs.
     let beacon_block_root = node_from_bytes(hex!(
         "d00c4da1a3ad4d42bd35f128544227d19e163194569d69d54a3d14112e3c897c"
