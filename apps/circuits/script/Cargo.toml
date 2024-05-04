@@ -1,7 +1,7 @@
 [workspace]
 [package]
 version = "0.1.0"
-name = "ssz-withdrawals-script"
+name = "gohan-sp1-avail"
 edition = "2021"
 
 [dependencies]

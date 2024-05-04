@@ -24,12 +24,7 @@ export default function Launch() {
 
   const handleIdInputContent = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
-    if (value.length <= 20) {
-      setInputIdValue(value)
-      setCorrectOtherInput(true)
-    } else {
-      setCorrectOtherInput(false)
-    }
+    setInputIdValue(value)
   }
 
   const handleEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {

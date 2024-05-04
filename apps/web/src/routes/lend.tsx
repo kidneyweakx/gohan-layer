@@ -15,22 +15,13 @@ export default function LendingPool() {
 
   const handleInputContent = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
-    if (value.length <= 20) {
       setInputValue(value)
-      setCorrectOtherInput(true)
-    } else {
-      setCorrectOtherInput(false)
-    }
+
   }
 
   const handleIdInputContent = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
-    if (value.length <= 20) {
-      setInputIdValue(value)
-      setCorrectOtherInput(true)
-    } else {
-      setCorrectOtherInput(false)
-    }
+    setInputIdValue(value)
   }
 
   const handleEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
