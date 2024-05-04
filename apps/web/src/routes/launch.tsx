@@ -14,12 +14,9 @@ export default function Launch() {
 
   const handleInputContent = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
-    if (value.length <= 20) {
+
       setInputValue(value)
-      setCorrectOtherInput(true)
-    } else {
-      setCorrectOtherInput(false)
-    }
+
   }
 
   const handleIdInputContent = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -95,12 +92,6 @@ export default function Launch() {
             <MineTokenButton hash={inputValue}/>
             </div>
 
-          <div className={`${correctOtherInput === true ? "hidden" : "flex items-center"}`}>
-            <svg className="h-6 w-6 mr-2 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-            </svg>
-            <p className="text-red-500 font-bold">Warning: Only allow number and string in text box！</p>
-          </div>
         </div>
       </div>
     </div>
