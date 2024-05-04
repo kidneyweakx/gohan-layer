@@ -87,24 +87,24 @@ async fn main() {
         }
     }
 
-    let data = "dGVzdAo=";
-    let response = rpcClient.post(&submit_url)
-    .header("Content-Type", "application/json")
-    .body(json!({ "data": data }).to_string())
-    .send()
-    .await
-    .unwrap();
+    // let data = "dGVzdAo=";
+    // let response = rpcClient.post(&submit_url)
+    // .header("Content-Type", "application/json")
+    // .body(json!({ "data": data }).to_string())
+    // .send()
+    // .await
+    // .unwrap();
 
-    match response.status() {
-        StatusCode::OK => {
-            let submit_response: SubmitResponse = serde_json::from_str(&response.text().await.unwrap()).unwrap();
-            println!("Submit response: {:?}", submit_response);
-        }
-        StatusCode::NOT_FOUND => {
-            println!("App mode not active or signing key not configured.");
-        }
-        _ => {
-            eprintln!("Failed to submit data: {}", response.status());
-        }
-    }
+    // match response.status() {
+    //     StatusCode::OK => {
+    //         let submit_response: SubmitResponse = serde_json::from_str(&response.text().await.unwrap()).unwrap();
+    //         println!("Submit response: {:?}", submit_response);
+    //     }
+    //     StatusCode::NOT_FOUND => {
+    //         println!("App mode not active or signing key not configured.");
+    //     }
+    //     _ => {
+    //         eprintln!("Failed to submit data: {}", response.status());
+    //     }
+    // }
 }

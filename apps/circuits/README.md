@@ -13,3 +13,8 @@ Transaction included in block: 0x9efff4e6c17731d8aa94c9d9ca7e6401bb85b2e3f37ef2e
 Transaction success. Your info is { "key": "gohan", "owner": "5CocSpj62xG11MAkQMzsd7h8wRoxx1E44f8tJUUrPaWQ4opj", "id": "18" }
 
 ### Subxt with some werid problem
+
+```
+cargo build --release
+RUST_LOG=info cargo run --release
+```
