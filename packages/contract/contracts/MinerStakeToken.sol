@@ -4,14 +4,13 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
-
 contract MinerStakeToken is ERC20{
     IERC20 public immutable token;
     uint256 ratio = 100;
     
     mapping(address => uint256) public minerBalances;
     mapping(address => uint256) public balances;
-    mapping(string => bool) public availMiner;
+    mapping(address => string) public availMiner;
 
     mapping(address => uint256) public availHash;
     constructor(address _token) ERC20("Gohan Reward Token", "Gohan"){
@@ -25,7 +24,7 @@ contract MinerStakeToken is ERC20{
         require(amount > 100 ** 18, "Minimum stake is 100 tokens");
         token.transferFrom(msg.sender, address(this), amount);
         minerBalances[msg.sender] += amount;
-        availMiner[minerAddr] = true;
+        availMiner[msg.sender] = minerAddr;
         emit Registered(msg.sender, amount);
     }
 
@@ -52,6 +51,7 @@ contract MinerStakeToken is ERC20{
     }
 
     function mine(uint256 aHash, address user) external{
+      require(bytes(availMiner[msg.sender]).length != 0, "Miner not registered");
       _mint(msg.sender, 1 * ratio);
       availHash[user] = aHash;
     }
