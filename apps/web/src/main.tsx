@@ -11,14 +11,13 @@ import ErrorPage from './routes/error'
 import { QueryClient, QueryClientProvider } from "react-query";
 import { createWeb3Modal, defaultWagmiConfig } from '@web3modal/wagmi/react'
 import { WagmiConfig, configureChains, createConfig } from 'wagmi'
-import { goerli, opBNBTestnet, mainnet, opBNB } from 'viem/chains'
+import { baseSepolia } from 'viem/chains'
+import { mantleSepolia, opAvail, cardona } from './utils/chains'
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet'
 import { InjectedConnector } from 'wagmi/connectors/injected'
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
 import { walletConnectProvider, EIP6963Connector } from '@web3modal/wagmi'
 import { publicProvider } from 'wagmi/providers/public'
-
-
 
 const projectId = 'e692bdfebfd147eb7a9d28dd4991518c'
 
@@ -30,7 +29,7 @@ const metadata = {
 }
 
 const { chains, publicClient } = configureChains(
-  [goerli,opBNB],
+  [mantleSepolia, baseSepolia, opAvail, cardona],
   [walletConnectProvider({ projectId }), publicProvider()],
   
 )

@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import Navbar from './components/Navbar'
 import { useNavigate } from 'react-router-dom'
+import { MintButton } from 'src/components/MintGood'
+import { ERC20Address } from 'src/services/contractAbi'
 // import { RegisterButton } from 'src/components/RegisterButton'
 
 export default function Launch() {
@@ -59,9 +61,17 @@ export default function Launch() {
       <div className='mx-auto md:max-w-[650px] w-full md:grid grid-row-5 text-center gap-4 rounded-md relative z-10' style={{"padding": "10px"}}>
         <Navbar />
         <div className='row-span-5'></div>
-        <label className="font-bold flex" style={{ "color": "white" }}>Search for streamer</label>
+        <label className="font-bold flex" style={{ "color": "white" }}>For no token guys (test)</label>
+        <div className='flex flex-col bg-slate-200 rounded-md p-16 h-[200px] bg-cover bg-no-repeat bg-launch-profile shadow-xl gap-3'>
+          <p className='text-xl text-start text-white'>Mint your token: </p>
+          <p className='text-xl text-start text-white'>Token address {ERC20Address}</p>
+          <div className='join gap-4 start'>
+            <MintButton/>
+          </div>
+        </div>
+        <label className="font-bold flex" style={{ "color": "white" }}>Create Pod</label>
         <div className='flex flex-col bg-slate-200 rounded-md p-16 h-[200px] bg-cover bg-no-repeat bg-launch-profile shadow-xl gap-3' style={{"marginBottom": "10px"}}>
-          <p className='text-xl text-start text-white'>Input steamer name: </p>
+          <p className='text-xl text-start text-white'>Input  name: </p>
           <div className='join gap-4 start'>
             <input
               type='text'
