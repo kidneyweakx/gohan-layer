@@ -21,7 +21,7 @@ export default function Navbar() {
                     if (index === 0) {
                     navigate("/launch")
                     } else if (index === 1) {
-                    navigate("/staker");
+                    navigate("/lend");
                     }
                 }}
             >

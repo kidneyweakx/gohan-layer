@@ -1,15 +1,15 @@
 import React from "react";
-import { ERC20ABI, ERC20Address, MinerTokenABI, MinerTokenAddress } from "src/services/contractAbi";
+import { ERC20ABI, ERC20Address } from "src/services/contractAbi";
 import { useAccount, useContractWrite } from "wagmi";
 import Loading from "./loading";
 
-export default function Lend(amount) {
+export default function MintButton() {
     const { address, isConnecting, isDisconnected } = useAccount()
-    // approve first and then stake
+
     const { data, isLoading, isSuccess, write } = useContractWrite({
-        address: MinerTokenAddress,
-        abi: MinerTokenABI,
-        functionName: 'lend',
+        address: ERC20Address,
+        abi: ERC20ABI,
+        functionName: 'mint',
         onSuccess(data) {
             alert('Successful! \n'+ "transaction hash: " + JSON.stringify(data).split(":")[1].split("\"")[1])
             
@@ -23,20 +23,17 @@ export default function Lend(amount) {
         return (
             <div>
                 <div>
-                    
                     {<button
                     className="btn join-item input-bordered input-info rounded"
                     type="button"
                     disabled={!write}
                     onClick={() => {
                       write({
-                          args: [address, 10000000000000000000],
+                          args: [address],
                       })
                     }}
                     style={{"borderRadius": "30px", "minWidth": "0px", "marginTop": "10px"}}
-                    >Lend</button>
-                    }
-                    
+                    >Mint</button>}
                 </div>
                 
                 <div>

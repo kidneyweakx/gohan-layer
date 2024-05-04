@@ -1,15 +1,15 @@
 import React from "react";
-import { ERC20ABI, ERC20Address } from "src/services/contractAbi";
+import { ERC20ABI, ERC20Address, MinerTokenABI, MinerTokenAddress } from "src/services/contractAbi";
 import { useAccount, useContractWrite } from "wagmi";
 import Loading from "./loading";
 
-export function MintButton() {
+export default function MineTokenButton(hash) {
     const { address, isConnecting, isDisconnected } = useAccount()
-
+    // approve first and then stake
     const { data, isLoading, isSuccess, write } = useContractWrite({
-        address: ERC20Address,
-        abi: ERC20ABI,
-        functionName: 'mint',
+        address: MinerTokenAddress,
+        abi: MinerTokenABI,
+        functionName: 'mine',
         onSuccess(data) {
             alert('Successful! \n'+ "transaction hash: " + JSON.stringify(data).split(":")[1].split("\"")[1])
             
@@ -29,11 +29,12 @@ export function MintButton() {
                     disabled={!write}
                     onClick={() => {
                       write({
-                          args: [address],
+                          args: [123,address],
                       })
                     }}
                     style={{"borderRadius": "30px", "minWidth": "0px", "marginTop": "10px"}}
-                    >Mint</button>}
+                    >Register</button>}
+                    
                 </div>
                 
                 <div>

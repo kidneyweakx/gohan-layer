@@ -18,7 +18,7 @@ contract MinerStakeToken is ERC20{
     }
 
     event Registered(address indexed miner, uint256 amount);
-    event Stake(address indexed staker, uint256 amount);
+    event Stake(address indexed staker, uint256 amount, uint256 dstChainID);
     
     function register(uint256 amount, string memory minerAddr) external {
         require(amount > 100 * (10** 18), "Minimum stake is 100 tokens");
@@ -39,9 +39,10 @@ contract MinerStakeToken is ERC20{
     }
 
     // lending system
-    function stake(uint256 amount) external {
+    function stake(uint256 amount, uint256 dstChainID) external {
         balances[msg.sender] += amount;
-        emit Stake(msg.sender, amount);
+        
+        emit Stake(msg.sender, amount, dstChainID);
     }
 
     function lend(address borrower, uint256 amount) external {

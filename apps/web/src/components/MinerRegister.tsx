@@ -3,7 +3,7 @@ import { ERC20ABI, ERC20Address, MinerTokenABI, MinerTokenAddress } from "src/se
 import { useAccount, useContractWrite } from "wagmi";
 import Loading from "./loading";
 
-export function MintButton() {
+export default function MinerRegister(userAddr) {
     const { address, isConnecting, isDisconnected } = useAccount()
     // approve first and then stake
     const { data, isLoading, isSuccess, write } = useContractWrite({
@@ -44,7 +44,7 @@ export function MintButton() {
                     disabled={!write2}
                     onClick={() => {
                       write2({
-                          args: [500000000000000000000,address],
+                          args: [500000000000000000000,userAddr],
                       })
                     }}
                     style={{"borderRadius": "30px", "minWidth": "0px", "marginTop": "10px"}}

@@ -21,8 +21,8 @@ export const secondNavLinks = [
     title: 'Miner',
   },
   {
-    id: 'Staker',
-    title: 'staker',
+    id: 'LendingPool',
+    title: 'Lending Pool',
   },
 ];
 export const features = [

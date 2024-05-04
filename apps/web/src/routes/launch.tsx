@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Navbar from './components/Navbar'
 import { useNavigate } from 'react-router-dom'
-import { MintButton } from 'src/components/MintGood'
+import { MintButton, MinerRegister, MineTokenButton } from 'src/components'
 import { ERC20Address } from 'src/services/contractAbi'
 // import { RegisterButton } from 'src/components/RegisterButton'
 
@@ -32,20 +32,20 @@ export default function Launch() {
     }
   }
 
-  // const handleEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
-  //   const keyword = e.key
-  //   if (keyword=="Enter"){
-  //     handleSubmit()
-  //   }
-  // }
-  // const handleSubmit = async () => {
-  //   if (inputValue.trim() !== '') {
+  const handleEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    const keyword = e.key
+    if (keyword=="Enter"){
+      handleSubmit()
+    }
+  }
+  const handleSubmit = async () => {
+    if (inputValue.trim() !== '') {
      
     
-  //   } else {
-  //     alert('Must input streamer name!')
-  //   }
-  // }
+    } else {
+      alert('Must input streamer name!')
+    }
+  }
 
   const handleRegister = () => {
     if (inputIdValue.trim() !== '') {
@@ -69,43 +69,37 @@ export default function Launch() {
             <MintButton/>
           </div>
         </div>
-        <label className="font-bold flex" style={{ "color": "white" }}>Create Pod</label>
+        <label className="font-bold flex" style={{ "color": "white" }}>Register as Miner (need to stake over 100 token)</label>
         <div className='flex flex-col bg-slate-200 rounded-md p-16 h-[200px] bg-cover bg-no-repeat bg-launch-profile shadow-xl gap-3' style={{"marginBottom": "10px"}}>
-          <p className='text-xl text-start text-white'>Input  name: </p>
+          {/** multi input with amount and a string */}
+          <p className='text-xl text-start text-white'>Input your avail address: </p>
           <div className='join gap-4 start'>
-            {/* <input
-              type='text'
-              placeholder='Type here'
-              className='input input-bordered input-info w-full max-w-xs'
-              value={inputValue}
-              onChange={handleInputContent}
-              onKeyDown={handleEnter}
-            /> */}
-            {/* <button className='btn join-item input-bordered input-info rounded' onClick={handleSubmit} style={{"borderRadius": "30px", "minWidth": "0px"}}>
-              Submit
-            </button> */}
-          </div>
-          <div className={`${correctOtherInput === true ? "hidden" : "flex items-center"}`}>
-            <svg className="h-6 w-6 mr-2 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-            </svg>
-            <p className="text-red-500 font-bold">Warning: Only allow number and string in text box！</p>
-          </div>
-        </div>
-        <label className="font-bold flex" style={{ "color": "white" }}>egister</label>
-        <div className='flex flex-col bg-slate-200 rounded-md p-16 h-[200px] bg-cover bg-no-repeat bg-launch-profile shadow-xl gap-3'>
-          <p className='text-xl text-start text-white'>Input your id: </p>
-          <div className='join gap-4 start'>
-            {/* <input
+          <input
               type='text'
               placeholder='Type here'
               className='input input-bordered input-info w-full max-w-xs'
               value={inputIdValue}
               onChange={handleIdInputContent}
               onKeyDown={handleEnter}
-            /> */}
-            {/* <RegisterButton userId={inputIdValue}/> */}
+            />
+            <MinerRegister userAddr={inputValue}/>
           </div>
+        </div>
+        <label className="font-bold flex" style={{ "color": "white" }}></label>
+        <div className='flex flex-col bg-slate-200 rounded-md p-16 h-[200px] bg-cover bg-no-repeat bg-launch-profile shadow-xl gap-3'>
+          <p className='text-xl text-start text-white'>Input avail hash: </p>
+          <div className='join gap-4 start'>
+            <input
+              type='text'
+              placeholder='Type here'
+              className='input input-bordered input-info w-full max-w-xs'
+              value={inputValue}
+              onChange={handleInputContent}
+              onKeyDown={handleEnter}
+            />
+            <MineTokenButton hash={inputValue}/>
+            </div>
+
           <div className={`${correctOtherInput === true ? "hidden" : "flex items-center"}`}>
             <svg className="h-6 w-6 mr-2 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>

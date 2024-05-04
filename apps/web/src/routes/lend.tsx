@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import Navbar from './components/Navbar'
 import { useNavigate } from 'react-router-dom'
-import { MintButton } from 'src/components/Miner'
+import { Collateral, MintButton } from 'src/components/'
 import { ERC20Address } from 'src/services/contractAbi'
+import Lend from 'src/components/Lend'
 
 
-export default function Staker() {
+export default function LendingPool() {
   const [inputValue, setInputValue] = useState<string>('')
   const [inputIdValue, setInputIdValue] = useState<string>('')
 
@@ -61,15 +62,7 @@ export default function Staker() {
       <div className='mx-auto md:max-w-[650px] w-full md:grid grid-row-5 text-center gap-4 rounded-md relative z-10' style={{"padding": "10px"}}>
         <Navbar />
         <div className='row-span-5'></div>
-        <label className="font-bold flex" style={{ "color": "white" }}>For no token guys (test)</label>
-        <div className='flex flex-col bg-slate-200 rounded-md p-16 h-[300px] bg-cover bg-no-repeat bg-launch-profile shadow-xl gap-3'>
-          <p className='text-xl text-start text-white'>Mint your token: </p>
-          <p className='text-xl text-start text-white'>Token address {ERC20Address}</p>
-          <div className='join gap-4 start'>
-            <MintButton/>
-          </div>
-        </div>
-        <label className="font-bold flex" style={{ "color": "white" }}>Create Pod</label>
+        <label className="font-bold flex" style={{ "color": "white" }}>Create Collateral Request</label>
         <div className='flex flex-col bg-slate-200 rounded-md p-16 h-[200px] bg-cover bg-no-repeat bg-launch-profile shadow-xl gap-3' style={{"marginBottom": "10px"}}>
           <p className='text-xl text-start text-white'>Input  name: </p>
           <div className='join gap-4 start'>
@@ -77,13 +70,12 @@ export default function Staker() {
               type='text'
               placeholder='Type here'
               className='input input-bordered input-info w-full max-w-xs'
+              defaultValue={123}
               value={inputValue}
               onChange={handleInputContent}
               onKeyDown={handleEnter}
             />
-            <button className='btn join-item input-bordered input-info rounded' onClick={handleSubmit} style={{"borderRadius": "30px", "minWidth": "0px"}}>
-              Submit
-            </button>
+            <Collateral dstChainId={inputValue}/>
           </div>
           <div className={`${correctOtherInput === true ? "hidden" : "flex items-center"}`}>
             <svg className="h-6 w-6 mr-2 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -92,9 +84,9 @@ export default function Staker() {
             <p className="text-red-500 font-bold">Warning: Only allow number and string in text box！</p>
           </div>
         </div>
-        <label className="font-bold flex" style={{ "color": "white" }}>egister</label>
+        <label className="font-bold flex" style={{ "color": "white" }}>Lending Pool</label>
         <div className='flex flex-col bg-slate-200 rounded-md p-16 h-[200px] bg-cover bg-no-repeat bg-launch-profile shadow-xl gap-3'>
-          <p className='text-xl text-start text-white'>Input your id: </p>
+          <p className='text-xl text-start text-white'>Lend Money</p>
           <div className='join gap-4 start'>
             <input
               type='text'
@@ -104,7 +96,7 @@ export default function Staker() {
               onChange={handleIdInputContent}
               onKeyDown={handleEnter}
             />
-            {/* <RegisterButton userId={inputIdValue}/> */}
+            <Lend amount={inputIdValue}/>
           </div>
           <div className={`${correctOtherInput === true ? "hidden" : "flex items-center"}`}>
             <svg className="h-6 w-6 mr-2 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
