@@ -5,13 +5,14 @@ pragma solidity ^0.8.20;
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract MyToken is ERC20, Ownable {
+contract TestStableCoin is ERC20, Ownable {
     constructor(address initialOwner)
-        ERC20("Fake USD", "FUSD")
+        ERC20("Test USD", "TstUSD")
         Ownable(initialOwner)
     {}
 
-    function mint(address to, uint256 amount) public onlyOwner {
-        _mint(to, amount);
+    // this function is only for testing purposes
+    function mint(address to) public {
+        _mint(to, 1000 * 10**18);
     }
 }

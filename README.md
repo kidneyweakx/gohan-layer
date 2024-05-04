@@ -1,6 +1,4 @@
-# Turborepo starter
-
-This is an official starter Turborepo.
+# Gohan Layer
 
 ## Using this example
 

@@ -22,5 +22,7 @@ fn main() {
     println!("proof saved to proof-with-pis.json");
     println!("successfully generated and verified proof for the program!");
 
-    // Send proof to 
+    // Send proof to avail
+
+    
 }

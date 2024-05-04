@@ -19,6 +19,10 @@ const chainIds = {
   sepolia: 11155111,
   hardhat: 31337,
   mainnet: 1,
+  cardona: 2442,
+  "mantle-sepolia": 5003,
+  "base-sepolia": 84532,
+  "op-avail": 202402021700,
 }
 
 // Ensure that we have all the environment variables we need.
@@ -35,6 +39,18 @@ if (!infuraApiKey) {
 function getChainConfig (chain: keyof typeof chainIds): NetworkUserConfig {
   let jsonRpcUrl: string
   switch (chain) {
+    case "mantle-sepolia":
+      jsonRpcUrl = "https://rpc.sepolia.mantle.xyz"
+      break
+    case "base-sepolia":
+      jsonRpcUrl = "https://public.stackup.sh/api/v1/node/base-sepolia"
+      break
+    case "op-avail":
+      jsonRpcUrl = "https://op-avail-sepolia.alt.technology"
+      break
+    case "cardona":
+      jsonRpcUrl = "https://rpc.cardona.zkevm-rpc.com"
+      break
     default:
       jsonRpcUrl = `https://${chain}.infura.io/v3/${infuraApiKey}`
   }
@@ -57,6 +73,10 @@ const config: HardhatUserConfig = {
     goerli: getChainConfig("goerli"),
     sepolia: getChainConfig("sepolia"),
     mainnet: getChainConfig("mainnet"),
+    cardona: getChainConfig("cardona"),
+    "mantle-sepolia": getChainConfig("mantle-sepolia"),
+    "base-sepolia": getChainConfig("base-sepolia"),
+    "op-avail": getChainConfig("op-avail"),
   },
   paths: {
     artifacts: "./artifacts",
@@ -92,7 +112,45 @@ const config: HardhatUserConfig = {
       goerli: process.env.ETHERSCAN_API_KEY || "",
       sepolia: process.env.ETHERSCAN_API_KEY || "",
       mainnet: process.env.ETHERSCAN_API_KEY || "",
+      cardona: process.env.POLYGONSCAN_API_KEY || "",
+      mantleSepolia: "NO_API_KEY",
+      baseSepolia: process.env.BASESCAN_API_KEY || "",
+      opAvail: "NO_API_KEY",
     },
+    customChains: [
+      {
+			  network: "baseSepolia",
+			  chainId: 84532,
+			  urls: {
+			   apiURL: "https://api-sepolia.basescan.org/api",
+			   browserURL: "https://sepolia.basescan.org/"
+			  }
+			},
+      {
+			  network: "mantleSepolia",
+			  chainId: 5003,
+			  urls: {
+			   apiURL: "https://explorer.sepolia.mantle.xyz/api/",
+			   browserURL: "https://explorer.sepolia.mantle.xyz/"
+			  }
+			},
+      {
+			  network: "opAvail",
+			  chainId: 202402021700,
+			  urls: {
+			   apiURL: "https://op-avail-sepolia-explorer.alt.technology/api/",
+			   browserURL: "https://op-avail-sepolia-explorer.alt.technology/"
+			  }
+			},
+      {
+        network: "cardona",
+        chainId: 2442,
+        urls: {
+          apiURL: "https://api-cardona-zkevm.polygonscan.com/api",
+          browserURL: "https://cardona-zkevm.polygonscan.com/"
+        }
+      }
+    ]
   },
 
   gasReporter: {
