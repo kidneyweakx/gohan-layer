@@ -53,3 +53,38 @@ task("deploy:token", "Deploy contract")
     }
   },
   )
+
+  task("deploy:miner", "Deploy Miner contract")
+  .addFlag("verify", "Validate contract after deploy")
+  .setAction(async ({ verify }, hre) => {
+    await hre.run("compile")
+    const [signer]: any = await hre.ethers.getSigners()
+    const contractFactory = await hre.ethers.getContractFactory("MinerStake")
+    // if you mint in constructor, you need to add value in deploy function
+    const token = JSON.parse(readFileSync(`scripts/address/${hre.network.name}/`, "TestStableCoin.json"))
+    const deployContract: any = await contractFactory.connect(signer).deploy(token.main)
+    console.log(`MinerStake.sol deployed to ${deployContract.address}`)
+
+    const address = {
+      main: deployContract.address,
+    }
+    const addressData = JSON.stringify(address)
+    writeFileSync(`scripts/address/${hre.network.name}/`, "MinerStake.json", addressData)
+
+    await deployContract.deployed()
+
+    if (verify) {
+      console.log("verifying contract...")
+      await deployContract.deployTransaction.wait(3)
+      try {
+        await hre.run("verify:verify", {
+          address: deployContract.address,
+          constructorArguments: [token.main],
+          contract: "contracts/MinerStake.sol:MinerStake",
+        })
+      } catch (e) {
+        console.log(e)
+      }
+    }
+  },
+  )
