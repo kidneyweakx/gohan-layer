@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import Navbar from './components/Navbar'
 import { useNavigate } from 'react-router-dom'
-import { MintButton } from 'src/components/MintGood'
+import { MintButton } from 'src/components/Miner'
 import { ERC20Address } from 'src/services/contractAbi'
-// import { RegisterButton } from 'src/components/RegisterButton'
+
 
 export default function Staker() {
   const [inputValue, setInputValue] = useState<string>('')

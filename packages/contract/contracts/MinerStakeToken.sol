@@ -21,7 +21,7 @@ contract MinerStakeToken is ERC20{
     event Stake(address indexed staker, uint256 amount);
     
     function register(uint256 amount, string memory minerAddr) external {
-        require(amount > 100 ** 18, "Minimum stake is 100 tokens");
+        require(amount > 100 * (10** 18), "Minimum stake is 100 tokens");
         token.transferFrom(msg.sender, address(this), amount);
         minerBalances[msg.sender] += amount;
         availMiner[msg.sender] = minerAddr;

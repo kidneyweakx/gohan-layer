@@ -32,26 +32,26 @@ export default function Launch() {
     }
   }
 
-  const handleEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    const keyword = e.key
-    if (keyword=="Enter"){
-      handleSubmit()
-    }
-  }
-  const handleSubmit = async () => {
-    if (inputValue.trim() !== '') {
+  // const handleEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  //   const keyword = e.key
+  //   if (keyword=="Enter"){
+  //     handleSubmit()
+  //   }
+  // }
+  // const handleSubmit = async () => {
+  //   if (inputValue.trim() !== '') {
      
     
-    } else {
-      alert('Must input streamer name!')
-    }
-  }
+  //   } else {
+  //     alert('Must input streamer name!')
+  //   }
+  // }
 
   const handleRegister = () => {
     if (inputIdValue.trim() !== '') {
       
     } else {
-      alert('Must input streamer id!')
+      alert('Must input avail address')
     }
   }
 
@@ -73,17 +73,17 @@ export default function Launch() {
         <div className='flex flex-col bg-slate-200 rounded-md p-16 h-[200px] bg-cover bg-no-repeat bg-launch-profile shadow-xl gap-3' style={{"marginBottom": "10px"}}>
           <p className='text-xl text-start text-white'>Input  name: </p>
           <div className='join gap-4 start'>
-            <input
+            {/* <input
               type='text'
               placeholder='Type here'
               className='input input-bordered input-info w-full max-w-xs'
               value={inputValue}
               onChange={handleInputContent}
               onKeyDown={handleEnter}
-            />
-            <button className='btn join-item input-bordered input-info rounded' onClick={handleSubmit} style={{"borderRadius": "30px", "minWidth": "0px"}}>
+            /> */}
+            {/* <button className='btn join-item input-bordered input-info rounded' onClick={handleSubmit} style={{"borderRadius": "30px", "minWidth": "0px"}}>
               Submit
-            </button>
+            </button> */}
           </div>
           <div className={`${correctOtherInput === true ? "hidden" : "flex items-center"}`}>
             <svg className="h-6 w-6 mr-2 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -96,14 +96,14 @@ export default function Launch() {
         <div className='flex flex-col bg-slate-200 rounded-md p-16 h-[200px] bg-cover bg-no-repeat bg-launch-profile shadow-xl gap-3'>
           <p className='text-xl text-start text-white'>Input your id: </p>
           <div className='join gap-4 start'>
-            <input
+            {/* <input
               type='text'
               placeholder='Type here'
               className='input input-bordered input-info w-full max-w-xs'
               value={inputIdValue}
               onChange={handleIdInputContent}
               onKeyDown={handleEnter}
-            />
+            /> */}
             {/* <RegisterButton userId={inputIdValue}/> */}
           </div>
           <div className={`${correctOtherInput === true ? "hidden" : "flex items-center"}`}>
