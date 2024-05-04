@@ -1,17 +1,23 @@
-# Gohan Layer
+# 
 
-## Using this example
+<div align="center">
+<h1>Gohan Layer</h1>
 
-Run the following command:
+<p> /p>
 
-```sh
-pnpm dlx create-turbo@latest
-```
+<img src="./apps/web/src/assets/logo.png" width="50%" height="50%"></img>
 
-## What's inside?
+[![License: ](https://img.shields.io/github/license/kidneyweakx/gohan-layer
+)](./LICENSE)
+</div>
 
-This Turborepo includes the following packages/apps:
+### Demo Page
+- WebPage: [gohan-layer.page.dev](https://gohan-layer.pages.dev/)
+- Video: [https://youtu.be/](https://youtu.be/)
+- Contract Address:
 
+
+### Abstract
 ### Sequence Diagram
 ```mermaid
 sequenceDiagram
@@ -35,6 +41,5 @@ sequenceDiagram
     
     %% Withdraw
     U ->> L: After prove collateral can lend money in other pool according collateral
-
 ```
 
